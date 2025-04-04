@@ -1,14 +1,30 @@
 import React, { useRef, useEffect } from 'react';
 import {
   Animated,
-  View,
   Image,
   Text,
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const HomeScreen = () => {
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RouteProp } from '@react-navigation/native';
+
+type RootStackParamList = {
+  Home: undefined;
+  Login: undefined;
+};
+
+type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
+type HomeScreenRouteProp = RouteProp<RootStackParamList, 'Home'>;
+
+type Props = {
+  navigation: HomeScreenNavigationProp;
+  route: HomeScreenRouteProp;
+};
+
+const HomeScreen: React.FC<Props> = ({ navigation }) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -34,7 +50,10 @@ const HomeScreen = () => {
         Envie produtos com facilidade e velocidade relâmpago.
       </Text>
 
-      <TouchableOpacity style={styles.buttonContainer} onPress={() => {}}>
+      <TouchableOpacity
+        style={styles.buttonContainer}
+        onPress={() => navigation.navigate('Login')}
+      >
         <Text style={styles.buttonText}>Começar</Text>
       </TouchableOpacity>
     </Animated.View>
@@ -52,8 +71,8 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontFamily: 'PlusJakartaSans-Bold',
     color: '#000000',
     marginTop: 20,
     textAlign: 'center',
@@ -63,6 +82,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#666666',
     textAlign: 'center',
+    fontFamily: 'PlusJakartaSans-Regular',
   },
   buttonContainer: {
     marginTop: 20,
@@ -76,6 +96,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
+    marginBottom: 5,
+    fontFamily: 'PlusJakartaSans-Bold',
   },
 });
