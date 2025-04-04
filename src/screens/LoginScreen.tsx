@@ -7,10 +7,12 @@ import {
   Image,
   StyleSheet,
 } from 'react-native';
+import Header from '../components/Header';
 
 const LoginScreen = () => {
   return (
     <View style={styles.container}>
+      <Header />
       {/* Ilustração */}
       <Image
         source={require('../assets/images/login_image.png')}
@@ -92,8 +94,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   input: {
-    flex: 1, // Para ocupar o espaço restante
-    paddingVertical: 10,
+    flex: 1,
+    paddingVertical: 12,
   },
   row: {
     flexDirection: 'row',
@@ -110,7 +112,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   register: {
-    color: '#F86F51',
+    fontSize: 16,
+    marginTop: 10,
+    color: '#22A6B3',
     fontFamily: 'PlusJakartaSans-SemiBold',
   },
   forgotPassword: {

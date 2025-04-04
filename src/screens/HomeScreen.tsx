@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import Header from '../components/Header';
 
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
@@ -37,6 +37,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
 
   return (
     <Animated.View style={{ ...styles.container, opacity: fadeAnim }}>
+      <Header />
       <Image
         source={require('../assets/images/motoboy_image.png')}
         style={{ width: 300, height: 300 }}
